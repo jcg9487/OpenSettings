@@ -74,7 +74,6 @@
     self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
-
 #pragma mark - TableView DataSousrce -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -90,8 +89,8 @@
     }
     
     NSDictionary *dataDict = self.dataSource[indexPath.row];
-    NSString *key = [dataDict allKeys].lastObject;
-    cell.textLabel.text = key;
+    NSString *key          = [dataDict allKeys].lastObject;
+    cell.textLabel.text    = key;
     
     return cell;
 }
@@ -105,9 +104,9 @@
     static NSString *kPrefsRoot = @"prefs:root=";
     
     NSDictionary *dataDict = self.dataSource[indexPath.row];
-    NSString *key = [dataDict allKeys].lastObject;
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kPrefsRoot,dataDict[key]];
-    NSURL * url      = [NSURL URLWithString:urlStr];
+    NSString *key          = [dataDict allKeys].lastObject;
+    NSString *urlStr       = [NSString stringWithFormat:@"%@%@",kPrefsRoot,dataDict[key]];
+    NSURL * url            = [NSURL URLWithString:urlStr];
     
     if([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url];
