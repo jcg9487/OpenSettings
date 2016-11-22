@@ -101,18 +101,20 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    static NSString *kPrefsRoot = @"prefs:root=";
+//    static NSString *kPrefsRoot = @"Prefs:root=";
+//    
+//    NSDictionary *dataDict = self.dataSource[indexPath.row];
+//    NSString *key          = [dataDict allKeys].lastObject;
+//    NSString *urlStr       = [NSString stringWithFormat:@"%@%@",kPrefsRoot,dataDict[key]];
+//    NSURL * url            = [NSURL URLWithString:urlStr];
+//    
+//    if([[UIApplication sharedApplication] canOpenURL:url]) {
+//        [[UIApplication sharedApplication] openURL:url];
+//        
+//    }
     
-    NSDictionary *dataDict = self.dataSource[indexPath.row];
-    NSString *key          = [dataDict allKeys].lastObject;
-    NSString *urlStr       = [NSString stringWithFormat:@"%@%@",kPrefsRoot,dataDict[key]];
-    NSURL * url            = [NSURL URLWithString:urlStr];
-    
-    if([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url];
-        
-    }
-    
+    //不要再使用私有api，iOS 10 以上只能使用以下方法。
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
 }
 
 
